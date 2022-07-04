@@ -72,6 +72,7 @@ i = 0 # Our cooldown time will be calculated using a simple counter
 while Cooldown:
     pycom.rgbled(0x0000FF) # Blink Blue during this phase
     temp = get_data()
+    client.publish(my_topic_temp, msg=str(int(temp)))
     print("Send data to MQTT broker, sleeping for 10 sec...")
     time.sleep(10)
     i += 10 # Add 10 sec to counter (Since we waited 10 since last time)
